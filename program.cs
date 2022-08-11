@@ -76,6 +76,7 @@ namespace SoisAlgorithms
                 Console.WriteLine("The sums that give the result:");
                 Console.WriteLine(string.Join("\n", sumList));
             }
+        
             public static void Extense()
             {
                 /*
@@ -89,6 +90,60 @@ namespace SoisAlgorithms
                 print number in extense by algorithm");
                 */
                 Console.WriteLine("WIP");
+                
+            }
+        
+            public static void Roman()
+            {
+                Console.WriteLine("Write your Roman Numeral");
+
+                string roman = Console.ReadLine() ?? "UNSET";
+                int Number = 0;
+                int size = roman.Length;
+                roman = roman.ToUpper();
+                if (roman != "UNSET")             
+                {
+                    char[] characters = roman.ToCharArray();
+                    Console.WriteLine(characters);
+                    foreach(char c in roman)
+                    {
+                        Console.WriteLine(c);
+                        if (c=='I')
+                        {
+                            Number = Number+1;
+                        }
+                        if (c=='V')
+                        {
+                            Number = Number+5;
+                        }
+                        if (c=='X')
+                        {
+                            Number = Number+10;
+                        }
+                        if (c=='L')
+                        {
+                            Number = Number+50;
+                        }
+                        if (c=='C')
+                        {
+                            Number = Number+100;
+                        }
+                        if (c=='D')
+                        {
+                            Number = Number+500;
+                        }
+                        if (c=='M')
+                        {
+                            Number = Number+1000;
+                        }
+                    }
+
+                    Console.WriteLine(Number);
+                }
+                else
+                {
+                    Console.WriteLine("Please write something");
+                }
                 
             }
         }
@@ -105,7 +160,8 @@ namespace SoisAlgorithms
              |1         - FizzBuzz
              |2         - Two Sum
              |3         - Extense Text
-             |4 or EXIT - Exits the program.
+             |4         - Roman Numerals
+             |5 or EXIT - Exits the program.
              |_____________________________________________________________
             ");
                 string MS = Console.ReadLine() ?? "BLANK";
@@ -113,7 +169,8 @@ namespace SoisAlgorithms
                 if (MS == "1") { MS = "FIZZ";    }
                 if (MS == "2") { MS = "TWOSUM"; }
                 if (MS == "3") { MS = "EXTENSE"; }
-                if (MS == "3") { MS = "EXIT";    }
+                if (MS == "4") { MS = "ROMAN"; }
+                if (MS == "5") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
                 {
@@ -129,6 +186,10 @@ namespace SoisAlgorithms
                         Algorithms.Extense();
                     break;
 
+                    case "ROMAN":
+                        Algorithms.Roman();
+                    break;
+                    
                     case "EXIT":
                         whiler = false;
                     break;
