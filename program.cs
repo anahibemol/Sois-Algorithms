@@ -95,10 +95,18 @@ namespace SoisAlgorithms
         
             public static void Roman()
             {
+                Console.WriteLine("Problem extracted from this site https://leetcode.com/problems/roman-to-integer/ ");
+
+                Console.WriteLine(@"
+                Problem:
+                
+                Given a roman numeral, convert it to an integer.");
+
                 Console.WriteLine("Write your Roman Numeral");
 
                 string roman = Console.ReadLine() ?? "UNSET";
                 int Number = 0;
+                int Number2 = 0;
                 int size = roman.Length;
                 roman = roman.ToUpper();
                 if (roman != "UNSET")             
@@ -111,30 +119,62 @@ namespace SoisAlgorithms
                         if (c=='I')
                         {
                             Number = Number+1;
+                            Number2 = Number+1;
                         }
                         if (c=='V')
                         {
                             Number = Number+5;
+                            if (Number2 == Number) //knowing the number is read from left to right, it will discover it beforehand.
+                            {
+                                Number = Number-2;
+                            }
+                            Number2 = Number;
+                            
                         }
                         if (c=='X')
                         {
                             Number = Number+10;
+                            if (Number2 == Number) //knowing the number is read from left to right, it will discover it beforehand.
+                            {
+                                Number = Number-2;
+                            }
+                            Number2 = Number;
                         }
                         if (c=='L')
                         {
                             Number = Number+50;
+                            if (Number2 == Number) //knowing the number is read from left to right, it will discover it beforehand.
+                            {
+                                Number = Number-20;
+                            }
+                            Number2 = Number;
                         }
                         if (c=='C')
                         {
                             Number = Number+100;
+                            if (Number2 == Number) //knowing the number is read from left to right, it will discover it beforehand.
+                            {
+                                Number = Number-20;
+                            }
+                            Number2 = Number;
                         }
                         if (c=='D')
                         {
                             Number = Number+500;
+                            if (Number2 == Number) //knowing the number is read from left to right, it will discover it beforehand.
+                            {
+                                Number = Number-200;
+                            }
+                            Number2 = Number;
                         }
                         if (c=='M')
                         {
                             Number = Number+1000;
+                            if (Number2 == Number) //knowing the number is read from left to right, it will discover it beforehand.
+                            {
+                                Number = Number-200;
+                            }
+                            Number2 = Number;
                         }
                     }
 
@@ -157,11 +197,11 @@ namespace SoisAlgorithms
              Console.WriteLine(@"
              Write the following commands for the wanted algorithm.
 
-             |1         - FizzBuzz
-             |2         - Two Sum
-             |3         - Extense Text
-             |4         - Roman Numerals
-             |5 or EXIT - Exits the program.
+             |1 or FIZZ    - FizzBuzz
+             |2 or TWOSUM  - Two Sum
+             |3 or EXTENSE - Extense Text
+             |4 or ROMAN   - Roman Numerals
+             |5 or EXIT    - Exits the program.
              |_____________________________________________________________
             ");
                 string MS = Console.ReadLine() ?? "BLANK";
