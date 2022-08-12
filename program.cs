@@ -186,6 +186,42 @@ namespace SoisAlgorithms
                 }
                 
             }
+
+            public static void Palindrome()
+            {
+                Console.WriteLine("Problem extracted from this site https://leetcode.com/problems/palindrome-number/ ");
+
+                Console.WriteLine(@"
+                Problem:
+                
+                Given an integer x, return true if x is palindrome integer.");
+
+                Console.WriteLine("Write your number");
+               string xStr = Console.ReadLine() ?? "1";
+
+               List<char> Nlist = new List<char>{};
+               List<char> Rlist = new List<char>{};
+
+               foreach(char c in xStr)
+               {
+                Nlist.Add(c);
+               }
+               foreach(char c in xStr.Reverse())
+               {
+                Rlist.Add(c);
+               }
+
+            if (string.Join(" ", Nlist) != string.Join(" ", Rlist))
+            {
+                Console.WriteLine("False");
+            }
+            else
+            {
+                Console.WriteLine("True");
+            }
+
+                
+            }
         }
 
         static void MainMenu()
@@ -197,11 +233,12 @@ namespace SoisAlgorithms
              Console.WriteLine(@"
              Write the following commands for the wanted algorithm.
 
-             |1 or FIZZ    - FizzBuzz
-             |2 or TWOSUM  - Two Sum
-             |3 or EXTENSE - Extense Text
-             |4 or ROMAN   - Roman Numerals
-             |5 or EXIT    - Exits the program.
+             |1 or FIZZ       - FizzBuzz.
+             |2 or TWOSUM     - Two Sum.
+             |3 or EXTENSE    - Extense Text.
+             |4 or ROMAN      - Roman Numerals.
+             |5 or PALINDROME - Palindrome.
+             |9 or EXIT       - Exits the program.
              |_____________________________________________________________
             ");
                 string MS = Console.ReadLine() ?? "BLANK";
@@ -210,7 +247,8 @@ namespace SoisAlgorithms
                 if (MS == "2") { MS = "TWOSUM"; }
                 if (MS == "3") { MS = "EXTENSE"; }
                 if (MS == "4") { MS = "ROMAN"; }
-                if (MS == "5") { MS = "EXIT";    }
+                if (MS == "5") { MS = "PALINDROME"; }
+                if (MS == "9") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
                 {
@@ -230,6 +268,9 @@ namespace SoisAlgorithms
                         Algorithms.Roman();
                     break;
                     
+                    case "PALINDROME":
+                        Algorithms.Palindrome();
+                    break;
                     case "EXIT":
                         whiler = false;
                     break;
