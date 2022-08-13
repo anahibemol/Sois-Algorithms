@@ -222,6 +222,34 @@ namespace SoisAlgorithms
 
                 
             }
+
+            public static void LastWordLength()
+            {
+                Console.WriteLine("Problem extracted from this site https://leetcode.com/problems/length-of-last-word/ ");
+
+                Console.WriteLine(@"
+                Problem:
+                
+                Given a string s consisting of words and spaces, return the length of the last word in the string.");
+
+                Console.WriteLine("Write your text");
+                string s = Console.ReadLine() ?? "No Text was Imputted";
+                List<string>Words = new List<string>{};
+                 var results = s.Split(' ').Where(x => x.Length > 3)
+                 /**/              .GroupBy(x => x)
+                 /**/              .Select(x => new { Count = x.Count(), Word = x.Key })
+                 /**/              .OrderByDescending(x => x.Count);
+                 foreach (var item in results)
+                 {
+                        Words.Add(item.Word);
+                 }
+                string LastWord  = Words[^1];
+                int LastWordC = LastWord.Length; 
+                 Console.WriteLine(LastWord);
+                 Console.WriteLine(LastWordC);
+
+            }
+
         }
 
         static void MainMenu()
@@ -238,6 +266,7 @@ namespace SoisAlgorithms
              |3 or EXTENSE    - Extense Text.
              |4 or ROMAN      - Roman Numerals.
              |5 or PALINDROME - Palindrome.
+             |6 or LASTWORD   - Lenght of the Last Word.
              |9 or EXIT       - Exits the program.
              |_____________________________________________________________
             ");
@@ -248,6 +277,7 @@ namespace SoisAlgorithms
                 if (MS == "3") { MS = "EXTENSE"; }
                 if (MS == "4") { MS = "ROMAN"; }
                 if (MS == "5") { MS = "PALINDROME"; }
+                if (MS == "6") { MS = "LASTWORD"; }
                 if (MS == "9") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
@@ -270,6 +300,9 @@ namespace SoisAlgorithms
                     
                     case "PALINDROME":
                         Algorithms.Palindrome();
+                    break;
+                    case "LASTWORD":
+                        Algorithms.LastWordLength();
                     break;
                     case "EXIT":
                         whiler = false;
