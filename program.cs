@@ -250,6 +250,146 @@ namespace SoisAlgorithms
 
             }
 
+            public static void OnedSum()
+            {
+                Console.WriteLine("Problem extracted from this site https://leetcode.com/problems/running-sum-of-1d-array/ ");
+
+                Console.WriteLine(@"
+                Problem:
+                
+                Given an array nums. We define a running sum of an array as runningSum[i] = sum(nums[0]…nums[i]).
+                Return the running sum of nums.");
+
+                Console.WriteLine("How many elements will your List have");
+                int i1 = Convert.ToInt32(Console.ReadLine());
+                List<int> I_List = new List<int>{};
+                List<int> O_List = new List<int>{};
+                while (i1 > 0)
+                {
+                    Console.WriteLine($"({i1} Remaining!) Write your number");
+
+                    int Number = Convert.ToInt32(Console.ReadLine());
+                    I_List.Add(Number);
+                    i1--;
+
+                }
+
+                for(int i = 0; i < I_List.Count(); i++)
+                {
+                    if(i == 0)
+                    {
+                        O_List.Add(I_List[i]);
+                    }
+                    else
+                    {
+                        O_List.Add(I_List[i]+I_List[i-1]);
+                    }
+                }
+            Console.WriteLine("Input:");
+            Console.WriteLine(string.Join(" ", I_List));
+            Console.WriteLine();
+            Console.WriteLine("Output:");
+            Console.WriteLine(string.Join(" ", O_List));
+            }
+        }
+
+
+        static void LeetCode()
+        {
+            bool whiler = true;
+
+            while (whiler is true)
+            {
+             Console.WriteLine(@"
+             Write the following commands for the wanted algorithm.
+             |1 or TWOSUM     - Two Sum.
+             |2 or ROMAN      - Roman Numerals.
+             |3 or PALINDROME - Palindrome.
+             |4 or LASTWORD   - Lenght of the Last Word.
+             |5 or ONEDSUM    - Running Sum of 1d Array.
+             |9 or EXIT       - Exits the program.
+             |_____________________________________________________________
+            ");
+                string MS = Console.ReadLine() ?? "BLANK";
+                
+                if (MS == "1") { MS = "TWOSUM"; }
+                if (MS == "2") { MS = "ROMAN"; }
+                if (MS == "3") { MS = "PALINDROME"; }
+                if (MS == "4") { MS = "LASTWORD"; }
+                if (MS == "5") { MS = "ONEDSUM"; }
+                if (MS == "9") { MS = "EXIT";    }
+                MS = MS.ToUpper();
+                switch (MS)
+                {
+
+                    case "TWOSUM":
+                        Algorithms.TwoSum();
+                    break;
+
+                    case "ROMAN":
+                        Algorithms.Roman();
+                    break;
+                    
+                    case "PALINDROME":
+                        Algorithms.Palindrome();
+                    break;
+
+                    case "LASTWORD":
+                        Algorithms.LastWordLength();
+                    break;
+                    case "ONEDSUM":
+                        Algorithms.OnedSum();
+                    break;
+                    case "EXIT":
+                        Program.MainMenu();
+                    break;
+
+                    default:
+                        Console.WriteLine("Invalid Command");
+                    break;
+            }
+         }
+    }
+
+        static void Other()
+        {
+            bool whiler = true;
+
+            while (whiler is true)
+            {
+             Console.WriteLine(@"
+             Write the following commands for the wanted algorithm.
+             |1 or FIZZ       - FizzBuzz.
+             |2 or EXTENSE    - Text in Extense.
+             |9 or EXIT       - Exits the program.
+             |_____________________________________________________________
+            ");
+                string MS = Console.ReadLine() ?? "BLANK";
+                
+                if (MS == "1") { MS = "FIZZ"; }
+                if (MS == "2") { MS = "EXTENSE"; }
+                if (MS == "9") { MS = "EXIT";    }
+                MS = MS.ToUpper();
+                switch (MS)
+                {
+
+                    case "FIZZ":
+                        Algorithms.FizzBuzz();
+                    break;
+
+                    case "EXTENSE":
+                        Algorithms.Extense();
+                    break;
+
+                    case "EXIT":
+                        Program.MainMenu();
+                    break;
+
+                    default:
+                        Console.WriteLine("Invalid Command");
+                    break;
+                }
+            }
         }
 
         static void MainMenu()
@@ -261,27 +401,23 @@ namespace SoisAlgorithms
              Console.WriteLine(@"
              Write the following commands for the wanted algorithm.
 
-             |1 or FIZZ       - FizzBuzz.
-             |2 or TWOSUM     - Two Sum.
-             |3 or EXTENSE    - Extense Text.
-             |4 or ROMAN      - Roman Numerals.
-             |5 or PALINDROME - Palindrome.
-             |6 or LASTWORD   - Lenght of the Last Word.
+             |1 or LEETCODE   - Problems Taken from Leetcode
+             |2 or OTHER      - Problems Taken from other source
              |9 or EXIT       - Exits the program.
              |_____________________________________________________________
             ");
                 string MS = Console.ReadLine() ?? "BLANK";
                 
-                if (MS == "1") { MS = "FIZZ";    }
-                if (MS == "2") { MS = "TWOSUM"; }
-                if (MS == "3") { MS = "EXTENSE"; }
-                if (MS == "4") { MS = "ROMAN"; }
-                if (MS == "5") { MS = "PALINDROME"; }
-                if (MS == "6") { MS = "LASTWORD"; }
+                if (MS == "1") { MS = "LEETCODE";    }
+                if (MS == "2") { MS = "OTHER"; }
                 if (MS == "9") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
                 {
+                    case "LEETCODE":
+                        Program.LeetCode();
+                    break;
+
                     case "FIZZ":
                         Algorithms.FizzBuzz();
                     break;
@@ -315,6 +451,7 @@ namespace SoisAlgorithms
                             
             }
         }
+        
         static void Main(string[] args)
         {
             Program.MainMenu();
