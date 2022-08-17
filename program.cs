@@ -285,11 +285,65 @@ namespace SoisAlgorithms
                         O_List.Add(I_List[i]+I_List[i-1]);
                     }
                 }
+        
             Console.WriteLine("Input:");
             Console.WriteLine(string.Join(" ", I_List));
             Console.WriteLine();
             Console.WriteLine("Output:");
             Console.WriteLine(string.Join(" ", O_List));
+            
+            }
+
+            public static void PivotIndex()
+            {
+                Console.WriteLine("Problem extracted from this site https://leetcode.com/problems/find-pivot-index/ ");
+
+                Console.WriteLine(@"
+                Problem:
+                
+                Given an array of integers nums, calculate the pivot index of this array.
+                The pivot index is the index where the sum of all the numbers strictly to
+                the left of the index is equal to the sum of all the numbers strictly to the index's right.
+                If the index is on the left edge of the array, then the left sum is 0 because there are no 
+                elements to the left. This also applies to the right edge of the array.
+
+                Return the leftmost pivot index. If no such index exists, return -1.");
+
+                List<int>Listing   = new List<int>{};
+                List<int>Leftsums  = new List<int>{};
+                List<int>Rightsums = new List<int>{};
+
+                Console.WriteLine("How long will your list be");
+                int Size = Convert.ToInt32(Console.ReadLine() ?? "1");
+                while(Size > 0)
+                {
+                    Console.WriteLine($"({Size} Remaining!) Write a Number");
+                    int num = Convert.ToInt32(Console.ReadLine() ?? "-995901");
+                    if (num == -995901) { Size++; }
+                    else { Listing.Add(num); }
+                    Size--;
+                }
+                int lsum = 0;
+                int rsum = 0;
+                for (int ibex = 0; ibex < Listing.Count(); ibex++)
+                {
+
+                    for (int i1 = ibex; i1 <= ((Listing.Count()/2)-ibex); i1++)
+                    {
+                        lsum = lsum + Listing[i1];                    
+                    }
+                    Listing.Add(lsum);
+
+                    for (int i2 = ibex; i2 < (Listing.Count()-ibex); i2++)
+                    {
+                        rsum = rsum + Listing[i2]; 
+                    }
+                    Listing.Add(lsum);
+                    
+                }
+                
+
+
             }
         }
 
@@ -307,6 +361,7 @@ namespace SoisAlgorithms
              |3 or PALINDROME - Palindrome.
              |4 or LASTWORD   - Lenght of the Last Word.
              |5 or ONEDSUM    - Running Sum of 1d Array.
+             |6 or PIVOTINDEX - Find Pivot Index.
              |9 or EXIT       - Exits the program.
              |_____________________________________________________________
             ");
@@ -317,6 +372,7 @@ namespace SoisAlgorithms
                 if (MS == "3") { MS = "PALINDROME"; }
                 if (MS == "4") { MS = "LASTWORD"; }
                 if (MS == "5") { MS = "ONEDSUM"; }
+                if (MS == "6") { MS = "PIVOTINDEX"; }
                 if (MS == "9") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
@@ -337,9 +393,15 @@ namespace SoisAlgorithms
                     case "LASTWORD":
                         Algorithms.LastWordLength();
                     break;
+
                     case "ONEDSUM":
                         Algorithms.OnedSum();
                     break;
+
+                    case "PIVOTINDEX":
+                        Algorithms.PivotIndex();
+                    break;
+
                     case "EXIT":
                         Program.MainMenu();
                     break;
