@@ -294,6 +294,25 @@ namespace SoisAlgorithms
             
             }
 
+            public static void PrimeCheck()
+            {
+                Console.WriteLine("Write your number");
+                int num = Convert.ToInt32(Console.ReadLine() ?? "2");
+                int prime = 0;
+                for(int n = 2; n <= num; n++)
+                {                
+                    int primecheck = 0;
+                    for(int i = 1; i < n; i++)
+                    {
+                        if(n % i == 0) {primecheck = primecheck+1; }
+                    }
+                    if (primecheck > 1) {Console.WriteLine($"{n} is not prime"); }
+                    else                {Console.WriteLine($"{n} is prime"); prime = prime+1;}
+                }
+
+            }
+
+
         }
 
 
@@ -310,7 +329,6 @@ namespace SoisAlgorithms
              |3 or PALINDROME - Palindrome.
              |4 or LASTWORD   - Lenght of the Last Word.
              |5 or ONEDSUM    - Running Sum of 1d Array.
-             |6 or PIVOTINDEX - Find Pivot Index.
              |9 or EXIT       - Exits the program.
              |_____________________________________________________________
             ");
@@ -321,7 +339,6 @@ namespace SoisAlgorithms
                 if (MS == "3") { MS = "PALINDROME"; }
                 if (MS == "4") { MS = "LASTWORD"; }
                 if (MS == "5") { MS = "ONEDSUM"; }
-                if (MS == "6") { MS = "PIVOTINDEX"; }
                 if (MS == "9") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
@@ -368,6 +385,7 @@ namespace SoisAlgorithms
              Write the following commands for the wanted algorithm.
              |1 or FIZZ       - FizzBuzz.
              |2 or EXTENSE    - Text in Extense.
+             |3 or PRIME      - Checks if a range of numebrs are prime.
              |9 or EXIT       - Exits the program.
              |_____________________________________________________________
             ");
@@ -375,6 +393,7 @@ namespace SoisAlgorithms
                 
                 if (MS == "1") { MS = "FIZZ"; }
                 if (MS == "2") { MS = "EXTENSE"; }
+                if (MS == "3") { MS = "PRIME"; }
                 if (MS == "9") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
@@ -388,6 +407,10 @@ namespace SoisAlgorithms
                         Algorithms.Extense();
                     break;
 
+                    case "PRIME":
+                        Algorithms.PrimeCheck();
+                    break;
+                    
                     case "EXIT":
                         Program.MainMenu();
                     break;
@@ -425,28 +448,10 @@ namespace SoisAlgorithms
                         Program.LeetCode();
                     break;
 
-                    case "FIZZ":
-                        Algorithms.FizzBuzz();
+                    case "OTHER":
+                        Program.Other();
                     break;
 
-                    case "TWOSUM":
-                        Algorithms.TwoSum();
-                    break;
-
-                    case "EXTENSE":
-                        Algorithms.Extense();
-                    break;
-
-                    case "ROMAN":
-                        Algorithms.Roman();
-                    break;
-                    
-                    case "PALINDROME":
-                        Algorithms.Palindrome();
-                    break;
-                    case "LASTWORD":
-                        Algorithms.LastWordLength();
-                    break;
                     case "EXIT":
                         whiler = false;
                     break;
