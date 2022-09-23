@@ -312,7 +312,24 @@ namespace SoisAlgorithms
 
             }
 
+            public static void EvenFibonacci()
+            {
+                List<long> Fibonacci = new List<long>{};
+                long i1 = 1;
+                Fibonacci.Add(i1);
+                long i2 = 1;
+                long i3 = 0;
+                while (i3 <= 4000000)
+                {
+                    i3 = i1 + i2;
+                    Fibonacci.Add(i2);
+                    i1 = i2;
+                    i2 = i3;                 
+                }
+                long Sum = Fibonacci.Where(x => x % 2 == 0).Sum();
 
+                Console.WriteLine($"The sum is: {Sum}");
+            }
         }
 
 
@@ -386,6 +403,7 @@ namespace SoisAlgorithms
              |1 or FIZZ       - FizzBuzz.
              |2 or EXTENSE    - Text in Extense.
              |3 or PRIME      - Checks if a range of numebrs are prime.
+             |4 or FIBO       - Even Fibonacci Sum.
              |9 or EXIT       - Exits the program.
              |_____________________________________________________________
             ");
@@ -394,6 +412,7 @@ namespace SoisAlgorithms
                 if (MS == "1") { MS = "FIZZ"; }
                 if (MS == "2") { MS = "EXTENSE"; }
                 if (MS == "3") { MS = "PRIME"; }
+                if (MS == "4") { MS = "FIBO"; }
                 if (MS == "9") { MS = "EXIT";    }
                 MS = MS.ToUpper();
                 switch (MS)
@@ -411,6 +430,10 @@ namespace SoisAlgorithms
                         Algorithms.PrimeCheck();
                     break;
                     
+                    case "FIBO":
+                        Algorithms.EvenFibonacci();
+                    break;
+
                     case "EXIT":
                         Program.MainMenu();
                     break;
